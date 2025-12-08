@@ -4,6 +4,9 @@ from sklearn.linear_model import Perceptron
 import seaborn as sns
 import matplotlib.pyplot as plt
 from mlxtend.plotting import plot_decision_regions
+
+# working on self made dataset marks to practice perceptron
+
 df=pd.read_excel("marks.xlsx")
 from sklearn.model_selection import train_test_split
 x=df.iloc[:,:-1]
