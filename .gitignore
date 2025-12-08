@@ -1,0 +1,9 @@
+# VS Code temp files
+tempCodeRunnerFile.*
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Windows junk
+Thumbs.db
