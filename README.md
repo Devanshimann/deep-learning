@@ -1,4 +1,4 @@
-<h2>Deep Learning Practice</h2>
+<h1>Deep Learning Practice</h1>
 This repository contains my ** practice work in Deep Learning and Machine Learning**. <br>
 
 ## 📚 What I Am Practicing
