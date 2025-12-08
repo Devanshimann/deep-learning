@@ -1,7 +1,7 @@
 <h2>Deep Learning Practice</h2>
 This repository contains my ** practice work in Deep Learning and Machine Learning**. <br>
 
-📚 What I Am Practicing
+##📚 What I Am Practicing
 
 -  Perceptron Algorithm  
 -  Neural Networks Basics
