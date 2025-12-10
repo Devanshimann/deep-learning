@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 import tensorflow
 from keras.models import Sequential
 from keras.layers import Dense
-df=pd.read_csv("churn_dataset_50.csv")
+df=pd.read_csv("churn_dataset_1000.csv")
 sc= StandardScaler()
 df.isnull().sum()
 x=df.iloc[:,:-1]
@@ -19,7 +19,7 @@ ann.add(Dense(4,activation="relu"))
 ann.add(Dense(2,activation="relu"))
 ann.add(Dense(1,activation="sigmoid"))
 ann.compile(optimizer="adam",loss="binary_crossentropy")
-ann.fit(xx,y_train,batch_size=4,epochs=10)
+ann.fit(xx,y_train,batch_size=10,epochs=10)
 pred=ann.predict(x2)
 new_pred=[]
 for i in pred:
