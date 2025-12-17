@@ -3,7 +3,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 import tensorflow
 from keras.models import Sequential
-from keras.layers import Dense
+from keras.layers import Dense,BatchNormalization,Dropout
 import matplotlib.pyplot as plt
 from keras.callbacks import EarlyStopping
 from keras.regularizers import l1_l2
@@ -18,9 +18,18 @@ x2=pd.DataFrame(sc.fit_transform(x_test),columns=x_test.columns)
 ann=Sequential()
 # print(xx.shape)
 ann.add(Dense(6,activation="relu",input_dim=8,kernel_regularizer=l1_l2(0.01)))
+ann.add(BatchNormalization())
+ann.add(Dropout(0.02))
 ann.add(Dense(4,activation="relu",kernel_regularizer=l1_l2(0.001)))
+ann.add(BatchNormalization())
+ann.add(Dropout(0.02))
 ann.add(Dense(2,activation="relu"))
+ann.add(Dropout(0.02))
+ann.add(BatchNormalization())
 ann.add(Dense(1,activation="sigmoid"))
+
+# if loss is constant than vanishing gradient problem
+
 ann.compile(optimizer="adam",loss="binary_crossentropy",metrics=["accuracy"])
 model=ann.fit(xx,y_train,batch_size=10,epochs=10,validation_data=(x2,y_test),callbacks=EarlyStopping())
 pred=ann.predict(x2)
@@ -32,7 +41,7 @@ for i in pred:
         new_pred.append(0)
 from sklearn.metrics import accuracy_score
 acc= accuracy_score(new_pred,y_test)
-# print(acc*100)
+print(acc*100)
 pred1=ann.predict(xx)
 new_pred1=[]
 for i in pred1:
@@ -42,7 +51,7 @@ for i in pred1:
         new_pred1.append(0)
 
 acc1=accuracy_score(y_train,new_pred1)
-# print(acc1*100)
+print(acc1*100)
 history=model.history
 train_=history["accuracy"]
 test_=history['val_accuracy']
